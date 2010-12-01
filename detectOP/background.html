@@ -1,0 +1,21 @@
+<script type="text/javascript">
+	var answer = {};
+	var func = function(){};
+	 
+	function setAnswer(ans, sender, response){
+		answer[sender.tab.id] = ans;
+		if(func[sender.tab.id]) (func[sender.tab.id])(ans);
+		response('set');
+	}	
+	
+  function getAnswer(callback, tab){
+    if(answer[tab]){
+      callback(answer[tab]);
+    } else {
+			func[tab] = callback;
+    }
+  }
+  
+  chrome.extension.onRequest.addListener(setAnswer);
+</script>
+

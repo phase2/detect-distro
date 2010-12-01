@@ -1,0 +1,48 @@
+<html>
+<head>
+	
+</head>
+<body style="width:200px; font-family:Tahoma; color:#333;">
+<script type="text/javascript">			
+			
+			
+			function callback(answer){				
+				document.getElementById('drupal').innerText = answer.drupal ? 'Yes' : 'No';
+				if(answer.drupal){
+					document.getElementById('drupal').style.backgroundColor = '#AFF0B3';
+				}else{
+					document.getElementById('drupal').style.backgroundColor = '#F58C8C';
+				}
+				document.getElementById('op').innerText = answer.op ? 'Yes' : 'No';
+				if(answer.op){
+					document.getElementById('op').style.backgroundColor = '#AFF0B3';
+				}else{
+					document.getElementById('op').style.backgroundColor = '#F58C8C';
+				}			
+			}
+			
+			function doreset(){
+				document.getElementById('drupal').innerText = 'Loading...';
+				document.getElementById('drupal').style.backgroundColor = '#fff';
+				document.getElementById('op').innerText = 'Loading...';
+				document.getElementById('op').style.backgroundColor = '#fff';
+			}
+			
+			var getanswer = function(tab) {
+				doreset();			
+				chrome.extension.getBackgroundPage().getAnswer(callback, tab.id);	
+			};
+			
+			chrome.tabs.getSelected(null, getanswer);
+
+</script>
+<table width="100%">
+  <tr>
+    <td style="margin:5px; padding:5px; background-color:#f1f1f1;">Drupal: </td><td id="drupal" style="padding:5px; text-align:center;"> Loading .. </td>
+  </tr>
+  <tr>
+    <td style="margin:5px; padding:5px; background-color:#f1f1f1; color:#760C29;">OpenPublish: </td><td id="op" style="padding:5px; text-align:center;"> Loading... </td>
+  </tr>
+</table>
+</body>
+</html>
