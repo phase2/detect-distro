@@ -69,7 +69,7 @@ function run() {
 	}
 }
 
-run();
+
 
 //This isn't quite implemented in the rest of the plugin
 function setTrigger() {
@@ -90,4 +90,7 @@ function setTrigger() {
 	document.body.appendChild(ans);
 }
 
-//setTrigger();
+setTrigger();
+
+//just calling run since trigger isn't finished
+run();

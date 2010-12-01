@@ -5,6 +5,7 @@
 	function setAnswer(ans, sender, response){
 		answer[sender.tab.id] = ans;
 		if(func[sender.tab.id]) (func[sender.tab.id])(ans);
+		console.log(ans);
 		response('set');
 	}	
 	
